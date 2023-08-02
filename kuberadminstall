@@ -32,6 +32,11 @@ sudo swapoff -a
 
 sudo apt install kubectl=1.25.0-00 kubeadm=1.25.0-00 kubelet=1.25.0-00 containerd
 
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
 sudo kubeadm init \
 --apiserver-advertise-address=192.168.1.1 \
 --pod-network-cidr 10.244.0.0/16 \
@@ -41,6 +46,6 @@ sudo kubeadm init \
 kubectl apply -f  https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 
 
-ubeadm join 192.168.1.1:6443 --token 3o8dkm.c48l205lcwtisy0g \
+kubeadm join 192.168.1.1:6443 --token 3o8dkm.c48l205lcwtisy0g \
 	--discovery-token-ca-cert-hash sha256:cd7faa56341098f453407f2e9fa38570ccd2c8f11332c1c974f108b1577d9beb 
 
