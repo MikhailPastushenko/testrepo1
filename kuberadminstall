@@ -1,4 +1,13 @@
-deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+
+apt install apt-transport-https ca-certificates curl
+
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg
+https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg]
+https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee
+/etc/apt/sources.list.d/kubernetes.list
+
 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
