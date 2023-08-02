@@ -46,6 +46,5 @@ sudo kubeadm init \
 kubectl apply -f  https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 
 
-kubeadm join 192.168.1.1:6443 --token 3o8dkm.c48l205lcwtisy0g \
-	--discovery-token-ca-cert-hash sha256:cd7faa56341098f453407f2e9fa38570ccd2c8f11332c1c974f108b1577d9beb 
-
+kubeadm join 192.168.1.1:6443 --token zv0jvt.xn6hgumu16fpamtr \
+	--discovery-token-ca-cert-hash sha256:0434f9512780bbd91980263e0a86ab37328c86cc2822bf85638a4830d2fde8be
