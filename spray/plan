@@ -1,4 +1,6 @@
 sudo apt install openssh-server # na vse nody
+ssh-keygen
+ssh-copy-id mikhail@192.168.1.1
 sudo git clone https://github.com/kubernetes-sigs/kubespray
 cd kubespray/
 sudo apt update
