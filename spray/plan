@@ -1,7 +1,7 @@
-sudo apt install openssh-server # na vse nody
-ssh-keygen
-ssh-copy-id mikhail@192.168.1.1
-sudo git clone https://github.com/kubernetes-sigs/kubespray
+sudo apt install openssh-server # на 
+ssh-keygen #  в YandexCloud можно скопировать те же ключи с хостовой машины  
+ssh-copy-id mikhail@192.168.1.1  # если это YandexCloud, то необходимо предварительно обратно включить аутентификацию ssh по паролю, иначе получим PermissionDenied(Public Key)
+git clone https://github.com/kubernetes-sigs/kubespray # нужно чтобы оунером каталога kubespray была уз mikhail (не root) иначе будут ошибки доступа в процессе работы плэйбука
 cd kubespray/
 sudo apt update
 sudo apt install pip
@@ -50,5 +50,4 @@ all:
 
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -K -v
 
-"command failed" err="failed to construct kubelet dependencies: unable to load client CA file /etc/kubernetes/ssl/ca.crt: open /etc/kubernetes/ssl/ca.crt: no such file or directory"
 
