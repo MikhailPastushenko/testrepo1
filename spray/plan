@@ -50,3 +50,5 @@ all:
 
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -K -v
 
+"command failed" err="failed to construct kubelet dependencies: unable to load client CA file /etc/kubernetes/ssl/ca.crt: open /etc/kubernetes/ssl/ca.crt: no such file or directory"
+
