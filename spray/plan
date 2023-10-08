@@ -1,6 +1,7 @@
-sudo apt install openssh-server # на 
-ssh-keygen #  в YandexCloud можно скопировать те же ключи с хостовой машины  
-ssh-copy-id mikhail@192.168.1.1  # если это YandexCloud, то необходимо предварительно обратно включить аутентификацию ssh по паролю, иначе получим PermissionDenied(Public Key)
+sudo apt install openssh-server #  в YandexCloud уже установлен 
+ssh-keygen #  в YandexCloud можно скопировать те же ключи с хостовой машины
+На мастер, скоторого будем устанавливать kubespray необходимо скопировать приватный ключ с локальной машины (открытую часть которого указывали в конфигурации создаваемых ВМ), чтобы мастер мог подключиться ко всем ВМ 
+### ssh-copy-id mikhail@192.168.1.1  # если это YandexCloud, то необходимо предварительно обратно включить аутентификацию ssh по паролю, иначе получим PermissionDenied(Public Key)
 git clone https://github.com/kubernetes-sigs/kubespray # нужно чтобы оунером каталога kubespray была уз mikhail (не root) иначе будут ошибки доступа в процессе работы плэйбука
 cd kubespray/
 sudo apt update
