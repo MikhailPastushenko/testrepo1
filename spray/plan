@@ -49,7 +49,8 @@ all:
     calico_rr:
       hosts: {}
 
-Чтобы подключиться к кластеру удалённо, надо спопировать конфиг ~/.kube/config с мастера добавить закомментировать строку в первым сертификатом и вместо неё добавить строку insecure-skip-tls-verify: true
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -K -v
+
+Чтобы подключиться к кластеру удалённо, надо спопировать конфиг ~/.kube/config с мастера добавить закомментировать строку в первым сертификатом и вместо неё добавить строку insecure-skip-tls-verify: true
 
 
