@@ -49,6 +49,42 @@ all:
     calico_rr:
       hosts: {}
 
+all:
+  hosts:
+    master-0:
+      ansible_host: 192.168.20.29
+      ip: 192.168.20.29
+      access_ip: 192.168.20.29
+    worker-0:
+      ansible_host: 192.168.20.19
+      ip: 192.168.20.19
+      access_ip: 192.168.20.19
+    worker-1:
+      ansible_host: 192.168.20.8
+      ip: 192.168.20.8
+      access_ip: 192.168.20.8
+  children:
+    kube_control_plane:
+      hosts:
+        master-0:
+    kube_node:
+      hosts:
+        master-0:
+        worker-0:
+        worker-1:
+    etcd:
+      hosts:
+        master-0:
+        worker-0:
+        worker-1:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}
+
+
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -K -v
 
 Чтобы подключиться к кластеру удалённо, надо спопировать конфиг ~/.kube/config с мастера добавить закомментировать строку в первым сертификатом и вместо неё добавить строку insecure-skip-tls-verify: true
